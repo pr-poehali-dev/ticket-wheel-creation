@@ -62,11 +62,25 @@ const Index = () => {
       price: 100,
     },
     {
+      name: "Ультра легендарный",
+      color: "bg-indigo-600",
+      chance: "1.5%",
+      count: 1.5,
+      price: 300,
+    },
+    {
       name: "Рубиновый",
       color: "bg-red-600",
       chance: "1%",
       count: 1,
-      price: 150,
+      price: 500,
+    },
+    {
+      name: "Секретный",
+      color: "bg-gradient-to-r from-purple-600 to-pink-600",
+      chance: "0.5%",
+      count: 0.5,
+      price: 1000,
     },
   ];
 
