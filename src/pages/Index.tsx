@@ -19,13 +19,55 @@ const Index = () => {
   const [currentSection, setCurrentSection] = useState("main");
 
   const rarityTypes = [
-    { name: "Обычный", color: "bg-gray-600", chance: "40%", count: 40 },
-    { name: "Редкий", color: "bg-blue-600", chance: "25%", count: 25 },
-    { name: "Сверх редкий", color: "bg-purple-600", chance: "15%", count: 15 },
-    { name: "Эпический", color: "bg-pink-600", chance: "10%", count: 10 },
-    { name: "Мифический", color: "bg-orange-600", chance: "6%", count: 6 },
-    { name: "Легендарный", color: "bg-yellow-600", chance: "3%", count: 3 },
-    { name: "Рубиновый", color: "bg-red-600", chance: "1%", count: 1 },
+    {
+      name: "Обычный",
+      color: "bg-gray-600",
+      chance: "40%",
+      count: 40,
+      price: 0,
+    },
+    {
+      name: "Редкий",
+      color: "bg-blue-600",
+      chance: "25%",
+      count: 25,
+      price: 30,
+    },
+    {
+      name: "Сверх редкий",
+      color: "bg-purple-600",
+      chance: "15%",
+      count: 15,
+      price: 45,
+    },
+    {
+      name: "Эпический",
+      color: "bg-pink-600",
+      chance: "10%",
+      count: 10,
+      price: 50,
+    },
+    {
+      name: "Мифический",
+      color: "bg-orange-600",
+      chance: "6%",
+      count: 6,
+      price: 75,
+    },
+    {
+      name: "Легендарный",
+      color: "bg-yellow-600",
+      chance: "3%",
+      count: 3,
+      price: 100,
+    },
+    {
+      name: "Рубиновый",
+      color: "bg-red-600",
+      chance: "1%",
+      count: 1,
+      price: 150,
+    },
   ];
 
   const spinWheel = () => {
@@ -118,34 +160,69 @@ const Index = () => {
         </div>
       </div>
 
-      <Card className="w-full max-w-4xl bg-card/50 backdrop-blur-sm border-primary/20">
-        <CardHeader>
-          <CardTitle className="text-center text-2xl text-primary">
-            Шансы на выигрыш
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {rarityTypes.map((rarity) => (
-              <div
-                key={rarity.name}
-                className="flex items-center justify-between p-3 rounded-lg bg-background/50"
-              >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-4 h-4 rounded-full ${rarity.color}`}></div>
-                  <span className="font-medium">{rarity.name}</span>
-                </div>
-                <Badge
-                  variant="secondary"
-                  className="bg-primary/10 text-primary"
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl">
+        <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
+          <CardHeader>
+            <CardTitle className="text-center text-2xl text-primary">
+              Шансы на выигрыш
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {rarityTypes.map((rarity) => (
+                <div
+                  key={rarity.name}
+                  className="flex items-center justify-between p-3 rounded-lg bg-background/50"
                 >
-                  {rarity.chance}
-                </Badge>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+                  <div className="flex items-center space-x-3">
+                    <div
+                      className={`w-4 h-4 rounded-full ${rarity.color}`}
+                    ></div>
+                    <span className="font-medium">{rarity.name}</span>
+                  </div>
+                  <Badge
+                    variant="secondary"
+                    className="bg-primary/10 text-primary"
+                  >
+                    {rarity.chance}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
+          <CardHeader>
+            <CardTitle className="text-center text-2xl text-primary">
+              Стоимость билетов
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {rarityTypes.map((rarity) => (
+                <div
+                  key={rarity.name}
+                  className="flex items-center justify-between p-3 rounded-lg bg-background/50"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div
+                      className={`w-4 h-4 rounded-full ${rarity.color}`}
+                    ></div>
+                    <span className="font-medium">{rarity.name}</span>
+                  </div>
+                  <Badge
+                    variant="secondary"
+                    className="bg-primary/10 text-primary font-bold"
+                  >
+                    {rarity.price === 0 ? "Бесплатно" : `${rarity.price} ₽`}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 
